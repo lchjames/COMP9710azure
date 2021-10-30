@@ -62,9 +62,7 @@ include 'topbar.php';
                         <?php echo $fan; ?>
                     </td>
                 </tr>
-
                 <?php
-                //mysql_query("INSERT INTO employee VALUES ('$name','$age','country')");
             }
         }
         ?>
@@ -80,20 +78,35 @@ include 'topbar.php';
             $file_open = fopen($file, "r");
             fgets($file_open);  // read one line for nothing (skip header)
             while (($csv = fgetcsv($file_open, 200, ",")) !== false) {
+                $vm1 = $conn->query("select max(vm1_port) from users");
+                $row = mysqli_fetch_array($vm1);
+                $vm1 = $row["max(vm1_port)"] + 1;
+//            echo $vm1;
+                $vm2 = $conn->query("select max(vm2_port) from users");
+                $row = mysqli_fetch_array($vm2);
+                $vm2 = $row["max(vm2_port)"] + 1;
+//            echo $vm2;
                 $title = $csv[0];
                 $first_name = $csv[1];
                 $middle_name = $csv[2];
                 $family_name = $csv[3];
                 $gender = $csv[4];
-                $username = $csv[5];
+                $user_name = $csv[5];
                 $email = $csv[6];
+                if ($email == "") {
+                    $email = "notset@flinders.edu.au";
+                }
                 $student_id = $csv[7];
                 $fan = $csv[8];
                 $uploader = $_SESSION["username"];
-                $sql = "INSERT INTO users (role_id, title, first_name, middle_name, family_name, gender, username, password, email_address, student_id, FAN,creted_date, created_by, last_modified_date, last_modified_by) "
-                        . "VALUES ('3','$title','$first_name','$middle_name','$family_name','$gender','$username','" . md5($username) . "','$email','$student_id','$fan','$today','$uploader','$today','$uploader')";
-                if ($conn->query($sql) === FALSE) {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
+                $sql = "SELECT * FROM `users` WHERE `username` =  '$user_name'";
+                $result = $conn->query($sql) or die(mysqli_error());
+                if ($result->num_rows == 0) {
+                    $sql = $sql = "INSERT INTO `users`( `role_id`, `title`, `first_name`, `middle_name`, `family_name`, `username`, `password`, `FAN`, `creted_date`, `created_by`, `email_address`,`vm1_port`, `vm2_port`) "
+                            . "VALUES ('3','$title','$first_name','$middle_name','$last_name','$user_name',md5('$user_name'),'$fan','$today','$uploader','notset@flinders.edu.au','$vm1','$vm2')";
+                    if ($conn->query($sql) === FALSE) {
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+                    }
                 }
             }
         }

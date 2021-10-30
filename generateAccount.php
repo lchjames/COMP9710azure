@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container">
-            <form method="post" name="user_register_submit" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="off" id="user_register"> 
+            <form method="post" name="user_register_submit" action="user_register_login.php" autocomplete="off" id="user_register"> 
                 <div class="title">Insert a single user</div>
                 <br>
                 Title:
@@ -27,8 +27,8 @@
                 <select name="role">
                     <?php
                     include 'DBconnect.php';
-                    $getCourse = "SELECT * FROM role";
-                    $result = $conn->query($getCourse) or die(mysqli_error());
+                    $get = "SELECT * FROM role";
+                    $result = $conn->query($get) or die(mysqli_error());
                     if ($result->num_rows > 0) {
                         while ($row = mysqli_fetch_array($result)) {
                             ?>

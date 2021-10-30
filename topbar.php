@@ -1,4 +1,5 @@
 <?php
+echo basename($_SERVER['PHP_SELF']);
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -27,12 +28,17 @@ include 'user_register_login.php';
         echo "<div class=\"topnav\" id=\"myTopnav\">";
         echo "<img class='brand-image' src='img/logo-white.png' />";
         if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-            echo "<a class=\"logout\" href=\"logout.php\">Logout</a>";
-            if (basename($_SERVER['PHP_SELF']) == "QandA.php") {
-                echo "<a class=\"active\" href=\"QandA.php\">?</a>";
-            } else {
-                echo "<a class=\"QnA\" href=\"QandA.php\">?</a>";
+            if ($_SESSION["usertype"] == 3) {
+                if (basename($_SERVER['PHP_SELF']) != "userDataPage.php" && basename($_SERVER['PHP_SELF']) != "user.php" && basename($_SERVER['PHP_SELF']) != "lab.php") {
+                    header('Location: user.php');
+                }
             }
+            echo "<a class=\"logout\" href=\"logout.php\">Logout</a>";
+//            if (basename($_SERVER['PHP_SELF']) == "QandA.php") {
+//                echo "<a class=\"active\" href=\"QandA.php\">?</a>";
+//            } else {
+//                echo "<a class=\"QnA\" href=\"QandA.php\">?</a>";
+//            }
             if (basename($_SERVER['PHP_SELF']) == "userDataPage.php") {
                 echo "<a class=\"active\" href=\"userDataPage.php\" class=\"username\">Welcome, " . $_SESSION["username"] . "</a></b>";
             } else {
@@ -61,6 +67,13 @@ include 'user_register_login.php';
                     echo "<a class=\"active\" href=\"user.php\">Home</a>";
                 } else {
                     echo "<a href=\"user.php\">Home</a>";
+                }
+            }
+            else{
+                if (basename($_SERVER['PHP_SELF']) == "moduleManage.php") {
+                    echo "<a class=\"active\" href=\"moduleManage.php\">Home</a>";
+                } else {
+                    echo "<a href=\"moduleManage.php\">Home</a>";
                 }
             }
         } else {

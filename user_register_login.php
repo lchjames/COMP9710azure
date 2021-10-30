@@ -39,23 +39,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register_submit'])) {
     $first_name = $_POST['firstName'];
     $middle_name = $_POST['midName'];
     $last_name = $_POST['lastName'];
-    $username = $_POST['username'];
+    $user_name = $_POST['username'];
     $fan = $_POST['fan'];
     $role = $_POST['role'];
     if ($fan != null) {
         if (include 'DBConnect.php') {
-            $sql = "SELECT * FROM `users` WHERE `username` =  '$username'";
+            $vm1 = $conn->query("select max(vm1_port) from users");
+            $row = mysqli_fetch_array($vm1);
+            $vm1 = $row["max(vm1_port)"] + 1;
+//            echo $vm1;
+            $vm2 = $conn->query("select max(vm2_port) from users");
+            $row = mysqli_fetch_array($vm2);
+            $vm2 = $row["max(vm2_port)"] + 1;
+//            echo $vm2;
+            $sql = "SELECT * FROM `users` WHERE `username` =  '$user_name'";
             $result = $conn->query($sql) or die(mysqli_error());
             if ($result->num_rows == 0) {
                 $uploader = $_SESSION["username"];
-                $sql = "INSERT INTO `users`( `role_id`, `title`, `first_name`, `middle_name`, `family_name`, `username`, `password`, `FAN`, `creted_date`, `created_by`, `email_address`) "
-                        . "VALUES ('$role','$title','$first_name','$middle_name','$last_name','$username',md5('$username'),'$fan','$today','$uploader','notset@flinders.edu.au')";
+                $sql = "INSERT INTO `users`( `role_id`, `title`, `first_name`, `middle_name`, `family_name`, `username`, `password`, `FAN`, `creted_date`, `created_by`, `email_address`,`vm1_port`, `vm2_port`) "
+                        . "VALUES ('$role','$title','$first_name','$middle_name','$last_name','$user_name',md5('$user_name'),'$fan','$today','$uploader','notset@flinders.edu.au','$vm1','$vm2')";
                 if ($conn->query($sql) === FALSE) {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 } else {
-                    echo "User " . $username . "has been created.";
+                    echo "User " . $user_name . " has been created.";
                 }
                 $conn->close();
+            }
+            else{
+                echo "User" . $user_name . " exist";
             }
         }
         header("location: editUser.php");

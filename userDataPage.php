@@ -27,7 +27,7 @@ include 'userDataFunction.php';
                     <?php
                     echo "Username:" . $row['username'] . "<br>";
                     echo "Email:" . $row['email_address'] . "<br>";
-                    echo "Password:" . $row['password'];
+                   // echo "Password:" . $row['password'];
                     ?>
                 </div>
                 <hr>
