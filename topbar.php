@@ -1,8 +1,6 @@
 <?php
 //echo basename($_SERVER['PHP_SELF']);
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 date_default_timezone_set('Australia/Adelaide');
 include 'user_register_login.php';
 ?>
