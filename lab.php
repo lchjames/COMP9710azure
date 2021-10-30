@@ -1,6 +1,8 @@
 
 <?php
 include 'topbar.php';
+if (session_status() !== PHP_SESSION_ACTIVE)
+    session_start();
 $activity_id = "";
 $activity_name = "";
 $doc_link = "";
@@ -20,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
 }
 ?> 
 <html>
-
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="css/styleLab.css">

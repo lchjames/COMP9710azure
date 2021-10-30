@@ -1,6 +1,8 @@
 <html>
     <?php
     include 'topbar.php';
+    if (session_status() !== PHP_SESSION_ACTIVE)
+        session_start();
     ?>
     <head>
         <title>Generate Account</title>
