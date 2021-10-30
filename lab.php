@@ -80,23 +80,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
 
     <div class="split right">
         <?php
-        $getIP1 = "";
-        $getIP2 = "";
-        $user = $_SESSION['username'];
-        $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
-        $result = $conn->query($sql) or die(mysqli_error());
-        if ($result->num_rows > 0) {
-            while ($row = mysqli_fetch_array($result)) {
-                $getIP1 = $row ['vm1_port'];
-                $getIP2 = $row ['vm2_port'];
+        if (include 'DBConnect.php') {
+            $getIP1 = "";
+            $getIP2 = "";
+            $user = $_SESSION['username'];
+            $sql = "SELECT * FROM `users` WHERE `username` = '$user'";
+            $result = $conn->query($sql) or die(mysqli_error());
+            if ($result->num_rows > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+                    $getIP1 = $row ['vm1_port'];
+                    $getIP2 = $row ['vm2_port'];
+                }
             }
+            $conn->close();
         }
-        $conn->close();
+//        echo "User :".$user;
+//        echo "vmport 1: " . $getIP1;
+//        echo "vmport 2: " . $getIP2;
         ?>
-        <a href="http://23.96.45.10:<?php echo $getIP1; ?>/">Full screen for Kali</a>
-        <iframe src="http://23.96.45.10:<?php echo $getIP1; ?>/" id="kali"  width="100%" height="50%"></iframe>
-        <a href="http://23.96.45.10:<?php echo $getIP2; ?>/">Full screen for Metasploitable</a>
-        <iframe src="http://23.96.45.10:<?php echo $getIP2; ?>/" id="metasploitable "  width="100%" height="50%"></iframe>
+        <a href="http://20.102.43.72:<?php echo $getIP1; ?>/">Full screen for Kali</a>
+        <iframe src="http://20.102.43.72:<?php echo $getIP1; ?>/" id="kali"  width="100%" height="50%"></iframe>
+        <a href="http://20.102.43.72:<?php echo $getIP2; ?>/">Full screen for Metasploitable</a>
+        <iframe src="http://20.102.43.720:<?php echo $getIP2; ?>/" id="metasploitable "  width="100%" height="50%"></iframe>
     </div>
 </body>
 </html> 
