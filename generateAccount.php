@@ -1,9 +1,9 @@
+<?php
+include 'topbar.php';
+if (session_status() !== PHP_SESSION_ACTIVE)
+    session_start();
+?>
 <html>
-    <?php
-    include 'topbar.php';
-    if (session_status() !== PHP_SESSION_ACTIVE)
-        session_start();
-    ?>
     <head>
         <title>Generate Account</title>
         <link rel="stylesheet" type="text/css" href="css/moduleManage.css"/>
