@@ -1,5 +1,8 @@
 
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include 'topbar.php';
 $activity_id = "";
 $activity_name = "";
