@@ -92,8 +92,8 @@ if ($activity_name == "") {
 //        echo "vmport 1: " . $getIP1;
 //        echo "vmport 2: " . $getIP2;
         ?>
-        <a href="20.102.41.56:<?php echo $getIP1; ?>/">Full screen for Kali</a>
-        <iframe src="20.102.41.56:<?php echo $getIP1; ?>/" id="kali"  width="100%" height="50%"></iframe>
+        <a href="https://20.102.41.56:<?php echo $getIP1; ?>/">Full screen for Kali</a>
+        <iframe src="https://20.102.41.56:<?php echo $getIP1; ?>/" id="kali"  width="100%" height="50%"></iframe>
         <a href="20.102.41.56:<?php echo $getIP2; ?>/">Full screen for Metasploitable</a>
         <iframe src="20.102.41.56:<?php echo $getIP2; ?>/" id="metasploitable "  width="100%" height="50%"></iframe>
     </div>
