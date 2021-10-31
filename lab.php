@@ -96,10 +96,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
 //        echo "vmport 1: " . $getIP1;
 //        echo "vmport 2: " . $getIP2;
         ?>
-        <a href="http://20.102.43.72:<?php echo $getIP1; ?>/">Full screen for Kali</a>
-        <iframe src="http://20.102.43.72:<?php echo $getIP1; ?>/" id="kali"  width="100%" height="50%"></iframe>
-        <a href="http://20.102.43.72:<?php echo $getIP2; ?>/">Full screen for Metasploitable</a>
-        <iframe src="http://20.102.43.720:<?php echo $getIP2; ?>/" id="metasploitable "  width="100%" height="50%"></iframe>
+        <a href="http://20.102.41.56:<?php echo $getIP1; ?>/">Full screen for Kali</a>
+        <iframe src="http://20.102.41.56:<?php echo $getIP1; ?>/" id="kali"  width="100%" height="50%"></iframe>
+        <a href="http://20.102.41.56:<?php echo $getIP2; ?>/">Full screen for Metasploitable</a>
+        <iframe src="http://20.102.41.56:<?php echo $getIP2; ?>/" id="metasploitable "  width="100%" height="50%"></iframe>
     </div>
 </body>
 </html> 
