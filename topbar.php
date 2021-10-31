@@ -2,9 +2,6 @@
 //echo basename($_SERVER['PHP_SELF']);
 if (session_status() !== PHP_SESSION_ACTIVE)
     session_start();
-echo "<pre>";
-echo print_r($_SESSION);
-echo "</pre>";
 date_default_timezone_set('Australia/Adelaide');
 include 'user_register_login.php';
 ?>
