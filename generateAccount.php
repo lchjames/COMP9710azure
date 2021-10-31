@@ -1,4 +1,7 @@
 <?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.<?php
 include 'topbar.php';
 if (session_status() !== PHP_SESSION_ACTIVE)
     session_start();
@@ -54,3 +57,7 @@ if (session_status() !== PHP_SESSION_ACTIVE)
         </div>
     </body>
 </html>
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
