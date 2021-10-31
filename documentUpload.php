@@ -31,9 +31,9 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["docToUpload"]["tmp_name"], $target_file)) {
-        echo "The file " . htmlspecialchars(basename($_FILES["docToUpload"]["name"])) . " has been uploaded for Module" . $module_num;
+        echo "The file " . htmlspecialchars(basename($_FILES["docToUpload"]["name"])) . " has been uploaded for activity" . $activity_id;
         $doc_link = basename($_FILES["docToUpload"]["name"]);
-        include_once 'DBConnect.php';
+        include 'DBConnect.php';
         $sql = "INSERT INTO `document`(`activity_id`, `document_name`, `description`, `file_path`) VALUES ('$activity_id','$doc_name','$description','$doc_link')";
         $result = $conn->query($sql) or die(mysqli_error());
         $conn->close();

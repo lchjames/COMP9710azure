@@ -65,7 +65,7 @@ if ($activity_name == "") {
             <p>Document: </p>
             <iframe src="<?php
             if ($doc_link != "") {
-                echo "https://github.com/lchjames/COMP9710azure/tree/main/pdf/" . $doc_link;
+                echo "https://flinderskalipractice.scm.azurewebsites.net/wwwroot/pdf/" . $doc_link;
             }
             ?>" width="100%" height="100%">
             </iframe>
