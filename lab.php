@@ -6,9 +6,9 @@ $activity_name = "";
 $doc_link = "";
 $doc_name = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
-    $activityID = $_POST['activityID'];
+    $activity_id = $_POST['activityID'];
     if (include 'DBConnect.php') {
-        $sql = "SELECT * FROM `document` d ,`activity` a WHERE a.activity_id = $activityID AND d.activity_id = $activityID";
+        $sql = "SELECT * FROM `document` d ,`activity` a WHERE a.activity_id = $activityID AND d.activity_id = $activity_id";
         $result = $conn->query($sql) or die(mysqli_error());
         while ($row = mysqli_fetch_array($result)) {
             $activity_id = $row ['activity_id'];
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
     <body>
         <div class="split left">
             <p><?php
-                if ($activityID == "") {
+                if ($activity_id == "") {
                     header("Location: user.php");
                 }
                 if ($activity_name == "") {
