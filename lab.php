@@ -1,6 +1,5 @@
-
+<?php include 'topbar.php'; ?>
 <?php
-include 'topbar.php';
 $activity_id = "";
 $activity_name = "";
 $doc_link = "";
@@ -26,16 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
     <body>
         <div class="split left">
             <p><?php
-                if ($activity_id == "") {
-                    header("Location: user.php");
-                }
-                if ($activity_name == "") {
-                    echo "Activity not exist";
-                } else {
-                    echo $activity_name;
-                }
-                ?></p>
-            <?php
+if ($activity_id == "") {
+    header("Location: user.php");
+}
+if ($activity_name == "") {
+    echo "Activity not exist";
+} else {
+    echo $activity_name;
+}
+?></p>
+                <?php
             $getVideo = "SELECT * FROM video WHERE activity_id = $activity_id";
             $resultVideo = $conn->query($getVideo) or die(mysqli_error());
             if ($resultVideo->num_rows > 0) {

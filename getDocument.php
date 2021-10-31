@@ -1,4 +1,6 @@
 <?php
+if (session_status() !== PHP_SESSION_ACTIVE)
+    session_start();
 $getDocument = "SELECT * FROM document d, activity a WHERE d.activity_id = a.activity_id && a.module_id = $moduleID";
 $resultDocument = $conn->query($getDocument) or die(mysqli_error());
 ?>

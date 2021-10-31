@@ -1,4 +1,6 @@
 <?php
+if (session_status() !== PHP_SESSION_ACTIVE)
+    session_start();
 $getActivity = "SELECT * FROM activity WHERE module_id = $moduleID";
 $resultActivity = $conn->query($getActivity) or die(mysqli_error());
 ?>
