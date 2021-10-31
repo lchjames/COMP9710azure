@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'flinderskalipractice'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6B47AE0D0D8F474198508462C8289EBC }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3E91B97E05044507A5C0514B6C252D9E }}
           package: .
