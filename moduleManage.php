@@ -6,6 +6,7 @@ $state = "";
 ?>
 <html>
     <head>
+        <title>Module Manage</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap-5.1.2-dist/css/bootstrap.min.css"/> 
         <link rel="stylesheet" type="text/css" href="css/moduleManage.css"/>
     </head>
