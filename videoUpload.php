@@ -49,7 +49,7 @@ if ($uploadOk == 0 || empty($_POST["videoName"]) || empty($_POST["activity"])) {
                 echo "The file " . htmlspecialchars(basename($_FILES["videoToUpload"]["name"])) . " has been uploaded for Module" . $activity_id;
             }
             $conn->close();
-            header("location: moduleManage.php");
+            header('refresh:5; url=moduleManage.php');
         }
     } elseif ($link != null) {
         include_once 'DBConnect.php';
@@ -61,9 +61,10 @@ if ($uploadOk == 0 || empty($_POST["videoName"]) || empty($_POST["activity"])) {
         }
         $conn->close();
         //echo $link;
-        header("location: moduleManage.php");
+        header('refresh:5; url=moduleManage.php');
     } else {
         echo "Sorry, there was an error uploading your file. ";
+        header('refresh:5; url=moduleManage.php');
     }
 }
 ?>
