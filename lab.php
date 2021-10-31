@@ -1,9 +1,6 @@
 
 <?php
 include 'topbar.php';
-echo "<pre>";
-echo print_r($_SESSION);
-echo "</pre>";
 $activity_id = "";
 $activity_name = "";
 $doc_link = "";
