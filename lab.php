@@ -8,10 +8,9 @@ $doc_name = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
     $activity_id = $_POST['activityID'];
     if (include 'DBConnect.php') {
-        $sql = "SELECT * FROM `document` d ,`activity` a WHERE a.activity_id = $activityID AND d.activity_id = $activity_id";
+        $sql = "SELECT * FROM `document` d ,`activity` a WHERE a.activity_id = $activity_id AND d.activity_id = $activity_id";
         $result = $conn->query($sql) or die(mysqli_error());
         while ($row = mysqli_fetch_array($result)) {
-            $activity_id = $row ['activity_id'];
             $activity_name = $row ['activity_name'];
             $doc_link = $row ['file_path'];
             $doc_name = $row ['document_name'];
@@ -37,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
                 }
                 ?></p>
             <?php
-            $getVideo = "SELECT * FROM video v, activity a WHERE v.activity_id = a.activity_id && a.module_id = $activityID";
+            $getVideo = "SELECT * FROM video WHERE activity_id = $activity_id";
             $resultVideo = $conn->query($getVideo) or die(mysqli_error());
             if ($resultVideo->num_rows > 0) {
                 while ($row = mysqli_fetch_array($resultVideo)) {
