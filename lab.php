@@ -7,12 +7,10 @@ $doc_name = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
     $activity_id = $_POST['activityID'];
     if (include 'DBConnect.php') {
-        $sql = "SELECT * FROM `document` d ,`activity` a WHERE a.activity_id = $activity_id AND d.activity_id = $activity_id";
+        $sql = "SELECT * FROM `activity` WHERE activity_id = $activity_id";
         $result = $conn->query($sql) or die(mysqli_error());
         while ($row = mysqli_fetch_array($result)) {
             $activity_name = $row ['activity_name'];
-            $doc_link = $row ['file_path'];
-            $doc_name = $row ['document_name'];
         }
     }
 }
@@ -26,16 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
     <body>
         <div class="split left">
             <p><?php
-if ($activity_id == "") {
-    header("Location: user.php");
-}
-if ($activity_name == "") {
-    echo "Activity not exist";
-} else {
-    echo $activity_name;
-}
-?></p>
-                <?php
+                if ($activity_id == "") {
+                    header("Location: user.php");
+                }
+                if ($activity_name == "") {
+                    echo "Activity not exist";
+                } else {
+                    echo $activity_name;
+                }
+                ?></p>
+            <?php
             $getVideo = "SELECT * FROM video WHERE activity_id = $activity_id";
             $resultVideo = $conn->query($getVideo) or die(mysqli_error());
             if ($resultVideo->num_rows > 0) {
@@ -63,13 +61,25 @@ if ($activity_name == "") {
             <?php }
             ?>
             <p>Document: </p>
-            <iframe src="<?php
-            if ($doc_link != "") {
-                echo "pdf/" . $doc_link;
+            <?php
+            if (include 'DBConnect.php') {
+                $sql = "SELECT * FROM `document` d ,`activity` a WHERE a.activity_id = $activity_id AND d.activity_id = $activity_id";
+                $result = $conn->query($sql) or die(mysqli_error());
+                while ($row = mysqli_fetch_array($result)) {
+                    $activity_name = $row ['activity_name'];
+                    $doc_link = $row ['file_path'];
+                    $doc_name = $row ['document_name'];
+                    ?>
+                    <iframe src="<?php
+                    if ($doc_link != "") {
+                        echo "pdf/" . $doc_link;
+                    }
+                    ?>" width="100%" height="100%">
+                    </iframe>
+                    <?php
+                }
             }
-            ?>" width="100%" height="100%">
-            </iframe>
-
+            ?>
         </div>
     </div>
 
