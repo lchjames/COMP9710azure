@@ -51,7 +51,7 @@ if ($activity_name == "") {
                     } elseif ($row['video_type_id'] == 1) {
                         ?>
                         <p>Video: <?php echo $row ['video_name']; ?></p>
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?php echo $row['url_link'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/<?php echo $row['url_link'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <br>
                         <?php
                     }
