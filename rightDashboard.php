@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['show_video'])) {
 if ($_SESSION["load"] == "document") {
     ?>
     <div class="title"><?php echo $_SESSION["doc_name"]; ?></div>
-    <iframe src = "pdf/<?php echo $_SESSION["doc_link"] ?>#zoom=100" width = "100%" height = "500px">
+    <iframe src = "https://github.com/lchjames/COMP9710azure/tree/main/pdf/<?php echo $_SESSION["doc_link"] ?>#zoom=100" width = "100%" height = "500px">
     </iframe>
     <?php
 } elseif ($_SESSION["load"] == "video") {
