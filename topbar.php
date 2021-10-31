@@ -1,6 +1,11 @@
 <?php
 //echo basename($_SERVER['PHP_SELF']);
-if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+    echo "start";
+} else {
+    echo "ERROR";
+}
 date_default_timezone_set('Australia/Adelaide');
 include 'user_register_login.php';
 ?>
@@ -66,8 +71,7 @@ include 'user_register_login.php';
                 } else {
                     echo "<a href=\"user.php\">Home</a>";
                 }
-            }
-            else{
+            } else {
                 if (basename($_SERVER['PHP_SELF']) == "moduleManage.php") {
                     echo "<a class=\"active\" href=\"moduleManage.php\">Home</a>";
                 } else {
