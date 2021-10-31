@@ -50,7 +50,7 @@ $state = "";
                                 $resultDocument = $conn->query($getDocument) or die(mysqli_error());
                                 if ($resultDocument->num_rows > 0) {
                                     while ($row = mysqli_fetch_array($resultDocument)) {
-                                        ?><p><a href="./pdf/<?php echo $row ['file_path'] ?>"><?php echo $row ['document_name']; ?>
+                                        ?><p><a href="https://flinderskalipractice.scm.azurewebsites.net/wwwroot/pdf/<?php echo $row ['file_path'] ?>"><?php echo $row ['document_name']; ?>
 
                                         </p>
                                         <form method="post" action="deleteDocVideo.php">
