@@ -1,6 +1,7 @@
 <?php
 include 'topbar.php';
 include 'getModuleDetail.php';
+include 'deleteDocVideo.php';
 $today = date("Y-m-d");
 $state = "";
 ?>
@@ -80,7 +81,7 @@ $state = "";
                                         } elseif ($row['video_type_id'] == 2) {
                                             ?><p><a href="./video/<?php echo $row ['file_path'] ?>"><?php echo $row ['video_name']; ?></a></p><?php }
                                         ?>
-                                        <form method = "post" action = "deleteDocVideo.php">
+                                        <form method = "post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                             <input type = 'hidden' value = "<?php echo $row['video_id']; ?>" name = "video_id">
                                             <input type = "submit" name = "video_delete" value = "Delete">
                                         </form>
