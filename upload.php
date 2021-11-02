@@ -14,7 +14,7 @@ include 'videoUpload.php';
     <!-- Video -->
 
     <div class="title">New Video</div>
-    <form action="videoUpload.php" method="post" enctype="multipart/form-data">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
         <div>
             <label>Select Video to upload:</label>
             <input type="file" name="videoToUpload" id="videoToUpload">
@@ -57,7 +57,7 @@ include 'videoUpload.php';
 <div class="upload-section">
     <!-- Document -->
     <div class="title">New Document</div>
-    <form action="documentUpload.php" method="post" enctype="multipart/form-data">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
         <div>
             <label>Select Document to upload:</label>
             <input type="file" name="docToUpload" id="docToUpload">
