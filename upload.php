@@ -50,7 +50,7 @@ include 'videoUpload.php';
         </div>
         <div>
             <label></label>
-            <input type="submit" value="Upload Video" name="submit">
+            <input type="submit" value="Upload_Video" name="submit">
         </div>
     </form>
 </div>
@@ -89,6 +89,6 @@ include 'videoUpload.php';
         </div>
         <div>
             <label></label>
-            <input type="submit" value="Upload Document" name="submit">
+            <input type="submit" value="Upload_Document" name="submit">
             </form>
         </div>
