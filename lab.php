@@ -69,14 +69,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
                     $activity_name = $row ['activity_name'];
                     $doc_link = $row ['file_path'];
                     $doc_name = $row ['document_name'];
-                    ?>
-                    <iframe src="<?php
                     if ($doc_link != "") {
-                        echo "pdf/" . $doc_link;
+                        ?>
+                        <iframe src="<?php echo "pdf/" . $doc_link; ?>
+                                " width="100%" height="100%">
+                        </iframe>
+                    <?php } else {
+                        ?>
+                        <p>There are no ducument yet</p>
+                        <?php
                     }
-                    ?>" width="100%" height="100%">
-                    </iframe>
-                    <?php
                 }
             }
             ?>
