@@ -1,4 +1,8 @@
-<?php include 'topbar.php'; ?>
+<?php
+include 'topbar.php';
+include 'documentUpload.php';
+include 'videoUpload.php';
+?>
 <head>
     <title>Upload document or video</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
