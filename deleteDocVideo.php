@@ -7,10 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['document_delete'])) {
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-        echo $sql;
+        //echo $sql;
         header('Location: moduleManage.php');
     }
-   
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['video_delete'])) {
     $videoID = $_POST['video_id'];
     if (include 'DBConnect.php') {
@@ -18,10 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['document_delete'])) {
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-        echo $sql;
+        // echo $sql;
         header('Location: moduleManage.php');
     }
-   
 }
 header('Location: moduleManage.php');
 ?>
