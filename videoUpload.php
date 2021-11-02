@@ -67,4 +67,5 @@ if ($uploadOk == 0 || empty($_POST["videoName"]) || empty($_POST["activity"])) {
         header('refresh:5; url=moduleManage.php');
     }
 }
+header('refresh:5; url=moduleManage.php');
 ?>

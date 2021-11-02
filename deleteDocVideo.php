@@ -23,4 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['document_delete'])) {
     echo $sql;
     header("Location:moduleManage.php");
 }
+    header("Location:moduleManage.php");
+
 ?>
