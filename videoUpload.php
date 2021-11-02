@@ -48,8 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Upload_Video'])) {
                 } else {
                     echo "The file " . htmlspecialchars(basename($_FILES["videoToUpload"]["name"])) . " has been uploaded for activity " . $activity_id;
                 }
-               
-                header('refresh:5; url=moduleManage.php');
             }
         } elseif ($link != null) {
             include 'DBConnect.php';
@@ -59,13 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Upload_Video'])) {
             if ($conn->query($sql) === FALSE) {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
-            header('refresh:5; url=moduleManage.php');
-           
         } else {
             echo "Sorry, there was an error uploading your file. ";
-            header('refresh:5; url=moduleManage.php');
         }
     }
 }
-header('location:moduleManage.php');
 ?>

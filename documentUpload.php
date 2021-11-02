@@ -36,14 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Upload_Document'])) {
             include 'DBConnect.php';
             $sql = "INSERT INTO `document`(`activity_id`, `document_name`, `description`, `file_path`) VALUES ('$activity_id','$doc_name','$description','$doc_link')";
             $result = $conn->query($sql) or die(mysqli_error());
-           
+
             echo "The file " . htmlspecialchars(basename($_FILES["docToUpload"]["name"])) . " has been uploaded for activity" . $activity_id;
-            header('refresh:5; url=moduleManage.php');
         } else {
             echo "Sorry, there was an error uploading your file.";
-            header('refresh:5; url=moduleManage.php');
         }
     }
 }
-header('location:moduleManage.php');
 ?>
