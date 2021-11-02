@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['document_delete'])) {
         $conn->close();
     }
     echo $sql;
-    header("Location:moduleManage.php");
+    header('Location: moduleManage.php');
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['video_delete'])) {
     $videoID = $_POST['video_id'];
     if (include 'DBConnect.php') {
@@ -21,8 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['document_delete'])) {
         $conn->close();
     }
     echo $sql;
-    header("Location:moduleManage.php");
+    header('Location: moduleManage.php');
 }
-    header("Location:moduleManage.php");
-
+header('Location: moduleManage.php');
 ?>
