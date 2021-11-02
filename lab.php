@@ -107,8 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['select_activity'])) {
         ?>
         <a href="http://20.102.41.56:<?php echo $getIP1; ?>/">Full screen for Kali</a>
         <iframe src="http://20.102.41.56:<?php echo $getIP1; ?>/" id="kali"  width="100%" height="50%"></iframe>
-        <a href="http://20.102.41.<?php echo 52+$getIP2-7001.":".$getIP2; ?>/">Full screen for Metasploitable:<?php echo "http://20.102.41.". 52+$getIP2-7001.":".$getIP2; ?></a>
-        <iframe src="http://20.102.41.<?php echo 52+$getIP2-7001.":".$getIP2; ?>/" id="metasploitable "  width="100%" height="50%"></iframe>
+        <a href="http://20.102.41.56:<?php echo $getIP2; ?>/">Full screen for Metasploitable:<?php echo "http://20.102.41.56:<?php echo $getIP2; ?></a>
+        <iframe src="http://20.102.41.56:<?php echo $getIP2; ?>/" id="metasploitable "  width="100%" height="50%"></iframe>
     </div>
 </body>
 </html> 
