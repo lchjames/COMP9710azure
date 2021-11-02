@@ -46,7 +46,7 @@ if ($uploadOk == 0 || empty($_POST["videoName"]) || empty($_POST["activity"])) {
             if ($conn->query($sql) === FALSE) {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             } else {
-                echo "The file " . htmlspecialchars(basename($_FILES["videoToUpload"]["name"])) . " has been uploaded for Module" . $activity_id;
+                echo "The file " . htmlspecialchars(basename($_FILES["videoToUpload"]["name"])) . " has been uploaded for activity " . $activity_id;
             }
             $conn->close();
             header('refresh:5; url=moduleManage.php');
