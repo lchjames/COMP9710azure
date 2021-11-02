@@ -40,7 +40,7 @@ if ($uploadOk == 0 || empty($_POST["videoName"]) || empty($_POST["activity"])) {
     if ($link == null) {
         if (move_uploaded_file($_FILES["videoToUpload"]["tmp_name"], $target_file)) {
             $path_link = basename($_FILES["videoToUpload"]["name"]);
-            include_once 'DBConnect.php';
+            include 'DBConnect.php';
             $sql = "INSERT INTO `video`(`video_type_id`, `activity_id`, `video_name`, `description`, `file_path`, `creted_date`, `created_by`)"
                     . " VALUES (2, '$activity_id','$video_name','$description','$path_link','$today','$uploader')";
             if ($conn->query($sql) === FALSE) {
@@ -52,7 +52,7 @@ if ($uploadOk == 0 || empty($_POST["videoName"]) || empty($_POST["activity"])) {
             header('refresh:5; url=moduleManage.php');
         }
     } elseif ($link != null) {
-        include_once 'DBConnect.php';
+        include 'DBConnect.php';
         $sql = "INSERT INTO `video`(`video_type_id`, `activity_id`, `video_name`, `description`,`url_link`, `creted_date`, `created_by`) "
                 . "VALUES (1, '$activity_id','$video_name','$description','$link', '$today','$uploader')";
 
@@ -67,5 +67,5 @@ if ($uploadOk == 0 || empty($_POST["videoName"]) || empty($_POST["activity"])) {
         header('refresh:5; url=moduleManage.php');
     }
 }
-header('refresh:5; url=moduleManage.php');
+header('location:moduleManage.php');
 ?>
