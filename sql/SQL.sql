@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `comp9710`;
+CREATE DATABASE  IF NOT EXISTS `comp9710` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `comp9710`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
@@ -38,7 +38,7 @@ CREATE TABLE `activity` (
   PRIMARY KEY (`activity_id`,`module_id`),
   KEY `module_id` (`module_id`),
   CONSTRAINT `activity_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `activity` (
 
 LOCK TABLES `activity` WRITE;
 /*!40000 ALTER TABLE `activity` DISABLE KEYS */;
-INSERT INTO `activity` VALUES (1,1,'activity 1: open','activity description','2021-01-01 00:00:00','2021-12-31 00:00:00','2021-09-21 14:47:55','2',NULL,'2'),(2,1,'activity 2: open','activity description','2021-01-01 00:00:00','2021-12-31 00:00:00','2021-09-21 14:47:55','2',NULL,'2'),(3,1,'activity 3: close','activity description','2021-01-01 00:00:00','2021-03-31 00:00:00','2021-09-21 14:47:55','2',NULL,'2'),(7,1,'as','as','2021-10-14 00:00:00','2021-10-15 00:00:00','2021-10-10 10:29:40','admin',NULL,NULL);
+INSERT INTO `activity` VALUES (1,1,'Analysis of SQL attack','','2021-01-01 00:00:00','2021-12-31 00:00:00','2021-09-21 14:47:55','2','2021-11-02 19:08:19','admin'),(8,2,'Snort and Firewall Rules','','2021-11-02 00:00:00','2021-12-31 00:00:00','2021-11-02 19:10:05','admin',NULL,NULL),(9,4,'Recovering passwords','','2021-11-02 00:00:00','2021-11-30 00:00:00','2021-11-02 19:12:09','admin',NULL,NULL),(10,3,'cracking tools','','2021-11-02 00:00:00','2021-11-02 00:00:00','2021-11-02 19:14:12','admin',NULL,NULL),(11,11,'scanning and enumeration tools','','2021-11-02 00:00:00','2021-11-30 00:00:00','2021-11-02 19:14:53','admin',NULL,NULL),(12,13,'Penetration Testing','','2021-11-02 00:00:00','2021-11-30 00:00:00','2021-11-02 19:15:07','admin',NULL,NULL),(13,12,'OpenVas','','2021-11-02 00:00:00','2021-11-30 00:00:00','2021-11-02 19:15:43','admin',NULL,NULL);
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,7 @@ CREATE TABLE `activity_grade` (
   KEY `activity_id` (`activity_id`),
   CONSTRAINT `activity_grade_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `activity_grade_ibfk_2` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `activity_question` (
   KEY `activity_id` (`activity_id`),
   CONSTRAINT `activity_question_ibfk_1` FOREIGN KEY (`question_type_id`) REFERENCES `question_type` (`question_type_id`),
   CONSTRAINT `activity_question_ibfk_2` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ CREATE TABLE `activity_question_answer` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `activity_question_answer_ibfk_1` FOREIGN KEY (`activity_question_id`) REFERENCES `activity_question` (`activity_question_id`),
   CONSTRAINT `activity_question_answer_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `course` (
   `last_modified_by` char(6) DEFAULT NULL COMMENT 'Course last modified by',
   `archive_status` int DEFAULT NULL COMMENT 'Archive status',
   PRIMARY KEY (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +214,7 @@ CREATE TABLE `document` (
   PRIMARY KEY (`document_id`,`activity_id`),
   KEY `activity_id` (`activity_id`),
   CONSTRAINT `document_ibfk_1` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +223,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES (2,1,'test','test','test.pdf','2021-10-10 23:21:28',NULL,NULL,NULL);
+INSERT INTO `document` VALUES (12,1,'SQL attack','','workshop1.pdf','2021-11-02 09:29:45',NULL,NULL,NULL),(13,8,'Firewall Rules','','workshop2.pdf','2021-11-02 09:32:08',NULL,NULL,NULL),(14,9,'Recovering password','','workshop3.pdf','2021-11-02 09:32:50',NULL,NULL,NULL),(15,10,'Cracking tools','','workshop4.pdf','2021-11-02 09:33:02',NULL,NULL,NULL),(16,11,'Scanning and enumeration tools','','workshop5.pdf','2021-11-02 09:33:15',NULL,NULL,NULL),(17,12,'Penetration Testing','','workshop6.pdf','2021-11-02 09:33:39',NULL,NULL,NULL),(18,13,'OpenVas','','workshop7.pdf','2021-11-02 09:34:04',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +247,7 @@ CREATE TABLE `enrolment` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `enrolment_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
   CONSTRAINT `enrolment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +279,7 @@ CREATE TABLE `management` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `management_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
   CONSTRAINT `management_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,7 +311,7 @@ CREATE TABLE `module` (
   PRIMARY KEY (`module_id`,`course_id`),
   KEY `course_id` (`course_id`),
   CONSTRAINT `module_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +320,7 @@ CREATE TABLE `module` (
 
 LOCK TABLES `module` WRITE;
 /*!40000 ALTER TABLE `module` DISABLE KEYS */;
-INSERT INTO `module` VALUES (1,1,'Module1 - Understanding the various attack types','2021-09-01 02:47:12','2021-11-30 02:47:28','2021-09-21 14:47:55','2','2021-10-08 14:13:10','2'),(2,1,'Module2 - Install and Configure Type II Hypervisor','2021-09-02 00:00:00','2021-11-25 00:00:00','2021-09-21 14:47:55','2','2021-10-29 11:29:36','admin'),(3,1,'Module3 - Managing Local Storage and Virtual Hard Disks','2021-09-03 00:00:00','2021-11-30 00:00:00','2021-09-21 14:47:55','2','2021-10-29 11:29:45','admin'),(4,1,'Module4 - Write-Protect a USB Drive and Block a Port','2021-09-04 02:47:22','2021-09-30 02:47:35','2021-09-21 14:47:55','2','2021-09-27 02:47:36','2'),(5,1,'Module5 - this module already expired at 2021-03-01','2021-09-05 02:47:24','2021-09-10 02:47:33','2021-09-21 14:47:55','2','2021-09-27 02:47:35','2'),(6,1,'Module6 - This module will be opened at 2021-12-01','2021-09-06 02:47:26','2021-09-10 02:47:37','2021-09-21 14:47:55','2','2021-09-27 02:47:38','2'),(10,1,'7777777','2021-10-29 00:00:00','2021-10-31 00:00:00','2021-10-10 23:22:04','admin',NULL,NULL);
+INSERT INTO `module` VALUES (1,1,'Cybersecurity Workshop 1: Analysis of SQL attack (3%)','2021-09-01 00:00:00','2021-12-31 00:00:00','2021-09-21 14:47:55','2','2021-11-02 18:56:32','admin'),(2,1,'Cybersecurity Workshop 2: Snort and Firewall Rules (3%)','2021-09-02 00:00:00','2021-12-31 00:00:00','2021-09-21 14:47:55','2','2021-11-02 18:58:38','admin'),(3,1,'Cybersecurity Workshop 3: Hashing functions, certificate authority and cracking tools (3%)','2021-09-03 00:00:00','2021-12-31 00:00:00','2021-09-21 14:47:55','2','2021-11-02 18:59:41','admin'),(4,1,'Cybersecurity Workshop 4: Recovering passwords using a Hacker Tool (3%)','2021-09-04 00:00:00','2021-12-31 00:00:00','2021-09-21 14:47:55','2','2021-11-02 18:59:37','admin'),(11,1,'Cybersecurity Workshop 5: Kali linux, scanning and enumeration tools (4%)','2021-11-02 00:00:00','2021-12-31 00:00:00','2021-11-02 19:00:35','admin',NULL,NULL),(12,1,'Cybersecurity Workshop 6: OpenVas and metaspolit framework (4%)','2021-11-02 00:00:00','2021-12-31 00:00:00','2021-11-02 19:01:15','admin','2021-11-02 19:13:35','admin'),(13,1,'Cybersecurity Workshop 7: Penetration Testing (10%)','2021-11-11 00:00:00','2021-11-27 00:00:00','2021-11-02 19:02:13','admin','2021-11-03 10:11:22','admin');
 /*!40000 ALTER TABLE `module` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +342,7 @@ CREATE TABLE `objective` (
   PRIMARY KEY (`objective_id`,`activity_id`),
   KEY `activity_id` (`activity_id`),
   CONSTRAINT `objective_ibfk_1` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +369,7 @@ CREATE TABLE `question_type` (
   `last_modified_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT 'Question type last modified date',
   `last_modified_by` char(6) DEFAULT NULL COMMENT 'Question type last modified by',
   PRIMARY KEY (`question_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,7 +396,7 @@ CREATE TABLE `role` (
   `last_modified_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT 'Role last modified date',
   `last_modified_by` char(6) DEFAULT NULL COMMENT 'Role last modified by',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -430,7 +430,7 @@ CREATE TABLE `test` (
   PRIMARY KEY (`test_id`,`module_id`),
   KEY `module_id` (`module_id`),
   CONSTRAINT `test_ibfk_1` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -461,7 +461,7 @@ CREATE TABLE `test_grade` (
   KEY `test_id` (`test_id`),
   CONSTRAINT `test_grade_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `test_grade_ibfk_2` FOREIGN KEY (`test_id`) REFERENCES `test` (`test_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +498,7 @@ CREATE TABLE `test_question` (
   PRIMARY KEY (`test_question_id`,`question_type_id`),
   KEY `question_type_id` (`question_type_id`),
   CONSTRAINT `test_question_ibfk_1` FOREIGN KEY (`question_type_id`) REFERENCES `question_type` (`question_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -534,7 +534,7 @@ CREATE TABLE `test_question_answer` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `test_question_answer_ibfk_1` FOREIGN KEY (`test_question_id`) REFERENCES `test_question` (`test_question_id`),
   CONSTRAINT `test_question_answer_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -565,7 +565,7 @@ CREATE TABLE `user_manual_document` (
   PRIMARY KEY (`document_id`),
   KEY `role_id` (`role_id`),
   CONSTRAINT `user_manual_document_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -608,7 +608,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`,`role_id`),
   KEY `role_id` (`role_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -617,7 +617,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,2,NULL,'f1','m1','l1','M','test','098f6bcd4621d373cade4e832627b4f6','asdasdsd@asdasd.com',NULL,NULL,NULL,NULL,'2021-09-21 14:47:55','0','2021-10-30 12:10:18','admin',6000,6201),(2,1,NULL,'f2','m2','l2','F','admin','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,NULL,NULL,NULL,'2021-09-21 14:47:55','0','2021-09-27 03:12:45','0',NULL,NULL),(3,3,NULL,'f3','m3','l3','N','lau0266','38243f2b627767520abf680060759349',NULL,NULL,NULL,NULL,NULL,'2021-09-21 14:47:55','0','2021-09-27 03:12:52','0',NULL,NULL),(20,1,'mr','vasu','','lg',NULL,'vasulg','779d5f897e9374eff2682b186669be77','notset@flinders.edu.au',NULL,'vasu0007',NULL,NULL,'2021-10-29 11:47:02','',NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,2,NULL,'f1','m1','l1','M','test','098f6bcd4621d373cade4e832627b4f6','asdasdsd@asdasd.com',NULL,NULL,NULL,NULL,'2021-09-21 14:47:55','0','2021-10-31 05:20:18','admin',6001,7001),(2,1,NULL,'f2','m2','l2','F','admin','21232f297a57a5a743894a0e4a801fc3','admin@admin.com',NULL,NULL,NULL,NULL,'2021-09-21 14:47:55','0','2021-11-03 08:12:51','admin',6006,7006),(3,3,NULL,'f3','m3','l3','N','lau0266','38243f2b627767520abf680060759349',NULL,NULL,NULL,NULL,NULL,'2021-09-21 14:47:55','0','2021-10-31 05:24:15','0',6007,7007),(20,1,'mr','vasu','','lg',NULL,'vasulg','779d5f897e9374eff2682b186669be77','notset@flinders.edu.au',NULL,'vasu0007',NULL,NULL,'2021-10-29 11:47:02','','2021-10-31 05:24:38',NULL,6008,7008),(28,3,'a','b','c','',NULL,'James','d52e32f3a96a64786814ae9b5279fbe5','notset@flinders.edu.au',NULL,'aaa0000',NULL,NULL,'2021-10-30 23:45:12','admin','2021-10-31 05:20:18',NULL,6002,7002),(29,3,'a','b','c','',NULL,'adf','b3af409bb8423187c75e6c7f5b683908','notset@flinders.edu.au',NULL,'aaa0001',NULL,NULL,'2021-10-30 23:45:12','admin','2021-10-31 05:20:18',NULL,6003,7004),(30,3,'a','b','c','',NULL,'asdf','912ec803b2ce49e4a541068d495ab570','notset@flinders.edu.au',NULL,'aaa0002',NULL,NULL,'2021-10-30 23:45:12','admin','2021-10-31 05:20:18',NULL,6004,7005),(31,3,'a','b','c','',NULL,'afwesfa','c4010f2e72603e695108c6f42079e1a0','notset@flinders.edu.au',NULL,'aaa0003',NULL,NULL,'2021-10-30 23:45:12','admin','2021-10-31 05:20:18',NULL,6005,7006);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -645,7 +645,7 @@ CREATE TABLE `video` (
   KEY `video_type_id` (`video_type_id`),
   CONSTRAINT `video_ibfk_1` FOREIGN KEY (`activity_id`) REFERENCES `activity` (`activity_id`),
   CONSTRAINT `video_ibfk_2` FOREIGN KEY (`video_type_id`) REFERENCES `video_type` (`video_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -654,7 +654,7 @@ CREATE TABLE `video` (
 
 LOCK TABLES `video` WRITE;
 /*!40000 ALTER TABLE `video` DISABLE KEYS */;
-INSERT INTO `video` VALUES (11,1,1,'a','a',NULL,'rvelwxuzwEE','2021-10-10 14:51:38','admin',NULL,NULL);
+INSERT INTO `video` VALUES (20,1,1,'affirmations for Success','',NULL,'maNr_0zK5VQ','2021-11-02 20:09:50','admin',NULL,NULL),(21,1,8,'Successful Life Programing Affirmations','',NULL,'5cnEMdkXcc8','2021-11-02 20:10:19','admin',NULL,NULL),(22,1,9,'Success','',NULL,'hKqjSiM38uM','2021-11-02 20:11:14','admin',NULL,NULL),(23,1,10,' Universal Connection While You Sleep','',NULL,'t65IP_-0acc','2021-11-02 20:11:34','admin',NULL,NULL);
 /*!40000 ALTER TABLE `video` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -673,7 +673,7 @@ CREATE TABLE `video_type` (
   `last_modified_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT 'Video type last modified date',
   `last_modified_by` char(6) DEFAULT NULL COMMENT 'Video type last modified by',
   PRIMARY KEY (`video_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -701,7 +701,7 @@ CREATE TABLE `virtual_machine` (
   `last_modified_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT 'Virtual machine last modified date',
   `last_modified_by` char(6) DEFAULT NULL COMMENT 'Virtual machine last modified by',
   PRIMARY KEY (`vm_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -731,7 +731,7 @@ CREATE TABLE `vm_management` (
   PRIMARY KEY (`vm_mng_id`,`vm_id`),
   KEY `vm_id` (`vm_id`),
   CONSTRAINT `vm_management_ibfk_1` FOREIGN KEY (`vm_id`) REFERENCES `virtual_machine` (`vm_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -752,4 +752,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-30 23:00:54
+-- Dump completed on 2021-11-06 23:18:40
